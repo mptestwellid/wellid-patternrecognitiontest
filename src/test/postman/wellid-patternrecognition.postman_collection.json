@@ -1,0 +1,784 @@
+{
+	"info": {
+		"_postman_id": "15d92dee-2efd-4ea2-a7f7-e5b307001842",
+		"name": "wellid-patternrecognition",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5399101"
+	},
+	"item": [
+		{
+			"name": "addPoint_x1_y1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Message is 'Point added'\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Point added\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 1, \"y\": 1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPoint_x2_y2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Message is 'Point added'\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Point added\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 2, \"y\": 2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPoint_x3_y3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Message is 'Point added'\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Point added\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 3, \"y\": 3}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPoint_x4_y5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Message is 'Point added'\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Point added\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 4, \"y\": 5}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPoints",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.points).to.be.an('array');\r",
+							"});\r",
+							"pm.test(\"Array contains at least 1 point\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.points.length).to.be.at.least(4);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/space",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"space"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLines2Points",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.lineSegments).to.be.an('array');\r",
+							"});\r",
+							"pm.test(\"Array contains at least 7 line\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\tpm.expect(jsonData.lineSegments).to.be.an('array').that.is.not.empty;\r",
+							"    pm.expect(jsonData.lineSegments.length).to.be.at.least(7);\r",
+							"\tpm.expect(jsonData.lineSegments[0].points).to.be.an('array').that.is.not.empty;\r",
+							"\tjsonData.lineSegments[0].points.forEach(function(point) {\r",
+							"        pm.expect(point).to.have.property('x');\r",
+							"        pm.expect(point).to.have.property('y');\r",
+							"    });\r",
+							"\r",
+							"    // Verifica che i valori 'x' e 'y' siano numerici\r",
+							"    pm.expect(jsonData.lineSegments[0].points[0].x).to.be.a('number');\r",
+							"    pm.expect(jsonData.lineSegments[0].points[0].y).to.be.a('number');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/lines/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lines",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLines3Points",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.lineSegments).to.be.an('array');\r",
+							"});\r",
+							"pm.test(\"Array contains at least 1 line\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\tpm.expect(jsonData.lineSegments).to.be.an('array').that.is.not.empty;\r",
+							"    pm.expect(jsonData.lineSegments.length).to.be.at.least(1);\r",
+							"\tpm.expect(jsonData.lineSegments[0].points).to.be.an('array').that.is.not.empty;\r",
+							"\tjsonData.lineSegments[0].points.forEach(function(point) {\r",
+							"        pm.expect(point).to.have.property('x');\r",
+							"        pm.expect(point).to.have.property('y');\r",
+							"    });\r",
+							"\r",
+							"    // Verifica che i valori 'x' e 'y' siano numerici\r",
+							"    pm.expect(jsonData.lineSegments[0].points[0].x).to.be.a('number');\r",
+							"    pm.expect(jsonData.lineSegments[0].points[0].y).to.be.a('number');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/lines/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lines",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPoint_x4_y4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Message is 'Point added'\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Point added\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 4, \"y\": 4}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPoint_x5_y5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Message is 'Point added'\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Point added\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 5, \"y\": 5}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLines4Points",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.lineSegments).to.be.an('array');\r",
+							"});\r",
+							"pm.test(\"Array contains at least 1 line\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\tpm.expect(jsonData.lineSegments).to.be.an('array').that.is.not.empty;\r",
+							"    pm.expect(jsonData.lineSegments.length).to.be.at.least(1);\r",
+							"\tpm.expect(jsonData.lineSegments[0].points).to.be.an('array').that.is.not.empty;\r",
+							"\tjsonData.lineSegments[0].points.forEach(function(point) {\r",
+							"        pm.expect(point).to.have.property('x');\r",
+							"        pm.expect(point).to.have.property('y');\r",
+							"    });\r",
+							"\r",
+							"    // Verifica che i valori 'x' e 'y' siano numerici\r",
+							"    pm.expect(jsonData.lineSegments[0].points[0].x).to.be.a('number');\r",
+							"    pm.expect(jsonData.lineSegments[0].points[0].y).to.be.a('number');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/lines/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lines",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLinesWrongInput",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/lines/x",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lines",
+						"x"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLinesNoInput",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/lines/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lines",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLinesLess2Input",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct structure\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"message\");\r",
+							"    pm.expect(jsonData).to.have.property(\"status\");\r",
+							"    pm.expect(jsonData.message).to.contain(\"To obtain a line segment you need at least two points\");\r",
+							"    pm.expect(jsonData.status).to.eql(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/lines/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lines",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAllPoints",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Space cleaned avvenuta\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"All points removed\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/space",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"space"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPointsPostDeletion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an empty array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.points).to.be.an('array').that.is.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/space",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"space"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPointWrongInput",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct structure\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"message\");\r",
+							"    pm.expect(jsonData).to.have.property(\"status\");\r",
+							"    pm.expect(jsonData.message).to.contain(\"'x' and 'y' coordinates are both mandatory\");\r",
+							"    pm.expect(jsonData.status).to.eql(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"x\": 1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
