@@ -1,13 +1,9 @@
 package wellid.patternrecognition.services;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import wellid.patternrecognition.model.bo.LineSegment;
 import wellid.patternrecognition.model.bo.Point;
 import wellid.patternrecognition.model.bo.Space;
 import wellid.patternrecognition.model.exception.InvalidPointException;
-import wellid.patternrecognition.model.response.ErrorResponse;
-import wellid.patternrecognition.model.response.LineSegmentResponse;
 import wellid.patternrecognition.utils.PatternRecognitionUtils;
 
 import java.util.ArrayList;
@@ -67,36 +63,24 @@ public class PatternRecognitionService {
     }
 
     /**
-     * Retrieves all line segments formed by the points in the space that meet the specified minimum number of points.
-     * A line segment is formed if there are at least two points, and the points are aligned.
+     * Retrieves a set of line segments formed by aligning points in the space with at least the specified minimum number
+     * of points per segment. The method identifies all possible line segments that can be created by aligning the given points.
+     * <p>
+     * If the total number of points in the space is less than two, an empty set is returned since it's impossible
+     * to form a line segment with fewer than two points.
+     * </p>
      *
-     * <p>This method first checks if the specified minimum number of points (`minPointsForLine`) is less than 2.
-     * If so, it returns a {@link ResponseEntity} containing an error message and a {@link HttpStatus#BAD_REQUEST} status.
-     *
-     * <p>If the number of points in the space is less than 2, it returns an empty set of line segments with an
-     * {@link HttpStatus#OK} status.
-     *
-     * <p>If there are sufficient points, the method iterates through the points to determine all possible line segments
-     * that can be formed with at least `minPointsForLine` points. Aligned points that satisfy the minimum requirement
-     * are added as line segments to the result set.
-     *
-     * @param minPointsForLine The minimum number of aligned points required to form a line segment. Must be 2 or greater.
-     *
-     * @return {@link ResponseEntity} containing a {@link LineSegmentResponse} with the set of line segments
-     * that meet the specified criteria, or an error message if the input is invalid.
+     * @param minPointsForLine the minimum number of points required to form a valid line segment. If this value is 2,
+     *                         all possible line segments with exactly two points will be included in the result.
+     * @return a set of {@link LineSegment} objects representing the line segments that can be formed from the points
+     *         in the space, where each segment contains at least the specified minimum number of aligned points.
      */
-    public ResponseEntity getLineSegment(int minPointsForLine) {
+    public Set<LineSegment> getLineSegment(int minPointsForLine) {
         List<Point> points = new ArrayList<>(space.getPoints());
         Set<LineSegment> lineSegments = new HashSet<>();
 
-        if(minPointsForLine < 2){
-            ErrorResponse error = new ErrorResponse("To obtain a line segment you need at least two points", HttpStatus.BAD_REQUEST.value());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-        }
-
         if(points.size() < 2){
-            LineSegmentResponse response = new LineSegmentResponse(lineSegments);
-            return ResponseEntity.ok(response);
+            return lineSegments;
         }
 
         for (int firstPointCounter = 0; firstPointCounter < points.size(); firstPointCounter++) {
@@ -125,7 +109,6 @@ public class PatternRecognitionService {
             }
         }
 
-        LineSegmentResponse response = new LineSegmentResponse(lineSegments);
-        return ResponseEntity.ok(response);
+        return lineSegments;
     }
 }

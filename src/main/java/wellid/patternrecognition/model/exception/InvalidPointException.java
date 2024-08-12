@@ -6,4 +6,7 @@ public class InvalidPointException extends Exception {
     public InvalidPointException(Point point){
         super("'x' and 'y' coordinates are both mandatory: " + point);
     }
+    public InvalidPointException(String message){
+        super(message);
+    }
 }

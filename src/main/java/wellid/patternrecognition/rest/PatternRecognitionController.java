@@ -5,10 +5,10 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wellid.patternrecognition.model.bo.Point;
+import wellid.patternrecognition.model.exception.InvalidInputException;
 import wellid.patternrecognition.model.exception.InvalidPointException;
 import wellid.patternrecognition.model.response.*;
 import wellid.patternrecognition.services.PatternRecognitionService;
@@ -43,17 +43,13 @@ public class PatternRecognitionController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Point added", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AddPointResponse.class))),
-            @ApiResponse(responseCode = "406", description = "Not Acceptable - Invalid point", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Not Acceptable - Invalid point", content = @Content)
     })
-    public ResponseEntity addPoint(@RequestBody Point point) {
-        try {
+    public ResponseEntity addPoint(@RequestBody Point point) throws InvalidPointException {
+            if(point == null) throw new InvalidPointException(MessageEnum.ADD_POINT_ERROR_POINT_NULL.getMessage());
             service.addPoint(point);
-            AddPointResponse response = new AddPointResponse("Point added",point);
+            AddPointResponse response = new AddPointResponse(MessageEnum.ADD_POINT_OK.getMessage(), point);
             return ResponseEntity.ok(response);
-        } catch (InvalidPointException e) {
-            ErrorResponse error = new ErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST.value());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-        }
     }
 
     /**
@@ -78,29 +74,40 @@ public class PatternRecognitionController {
     }
 
     /**
-     * Retrieves all line segments formed by points in the space that meet the specified minimum number of points.
-     * This endpoint delegates the processing to the service layer, which calculates the line segments and returns the results.
+     * Retrieves line segments formed by at least the specified number of aligned points.
+     * <p>
+     * This method takes a minimum number of points required to form a valid line segment
+     * and returns all the line segments that meet or exceed this threshold.
+     * If the provided `minPointsForLine` is less than 2, an {@link InvalidInputException} is thrown,
+     * indicating that it's impossible to form a line segment with fewer than two points.
+     * </p>
      *
-     * <p>The method handles HTTP GET requests directed to the "/lines/{minPointsForLine}" URL, where `minPointsForLine` is
-     * the minimum number of aligned points required to form a line segment.
-     *
-     * @param minPointsForLine The minimum number of aligned points required to form a line segment.
-     * Must be 2 or greater.
-     *
-     * @return {@link ResponseEntity} containing the set of line segments that meet the specified criteria, or an error message
-     * if the input is invalid. The response can be an error with {@link HttpStatus#BAD_REQUEST} if `minPointsForLine` is
-     * less than 2.
+     * @param minPointsForLine the minimum number of points required to form a valid line segment.
+     *                         Must be at least 2.
+     * @return a {@link ResponseEntity} containing a {@link LineSegmentResponse} with the list of line segments.
+     * @throws InvalidInputException if the provided `minPointsForLine` is less than 2.
      */
     @GetMapping("/lines/{minPointsForLine}")
-    @Operation(summary = "Retrieve line segments", description = "Returns line segments formed by at least the specified number of aligned points.")
+    @Operation(
+            summary = "Retrieve line segments",
+            description = "Returns line segments formed by at least the specified number of aligned points."
+    )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successful retrieval of line segments",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = LineSegmentResponse.class))),
-            @ApiResponse(responseCode = "400", description = "Invalid input: less than 2 points required for a line segment",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Successful retrieval of line segments",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = LineSegmentResponse.class))
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid input: less than 2 points required for a line segment",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            )
     })
     public ResponseEntity getLines(@PathVariable int minPointsForLine) {
-        return service.getLineSegment(minPointsForLine);
+        if(minPointsForLine < 2) throw new InvalidInputException(MessageEnum.LINE_SEGMENT_ERROR_LESS_TWO_POINTS.getMessage());
+        LineSegmentResponse response = new LineSegmentResponse(service.getLineSegment(minPointsForLine));
+        return ResponseEntity.ok(response);
     }
 
     /**
@@ -130,7 +137,7 @@ public class PatternRecognitionController {
     )
     public ResponseEntity<ClearSpaceResponse> clearSpace() {
         service.clearPoints();
-        ClearSpaceResponse response = new ClearSpaceResponse("All points removed");
+        ClearSpaceResponse response = new ClearSpaceResponse(MessageEnum.CLEAR_SPACE_OK.getMessage());
         return ResponseEntity.ok(response);
     }
 }

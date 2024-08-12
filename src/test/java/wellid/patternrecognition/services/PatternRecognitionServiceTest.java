@@ -2,12 +2,10 @@ package wellid.patternrecognition.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.ResponseEntity;
 import wellid.patternrecognition.model.bo.LineSegment;
 import wellid.patternrecognition.model.bo.Point;
 import wellid.patternrecognition.model.bo.Space;
 import wellid.patternrecognition.model.exception.InvalidPointException;
-import wellid.patternrecognition.model.response.LineSegmentResponse;
 
 import java.util.List;
 import java.util.Set;
@@ -73,8 +71,8 @@ class PatternRecognitionServiceTest {
 
     @Test
     public void testGetLineSegmentsNoPoints() {
-        ResponseEntity<LineSegmentResponse> lines = service.getLineSegment(2);
-        assertTrue(lines.getBody().getLineSegments().isEmpty());
+        Set<LineSegment> lines = service.getLineSegment(2);
+        assertTrue(lines.isEmpty());
     }
 
     @Test
@@ -84,8 +82,8 @@ class PatternRecognitionServiceTest {
         service.addPoint(point1);
         service.addPoint(point2);
 
-        ResponseEntity<LineSegmentResponse> lines = service.getLineSegment(3);
-        assertTrue(lines.getBody().getLineSegments().isEmpty());
+        Set<LineSegment> lines = service.getLineSegment(3);
+        assertTrue(lines.isEmpty());
     }
 
     @Test
@@ -100,8 +98,7 @@ class PatternRecognitionServiceTest {
         service.addPoint(p3);
         service.addPoint(p4);
 
-        ResponseEntity<LineSegmentResponse> response = service.getLineSegment(3);
-        List<LineSegment> lines = response.getBody().getLineSegments().stream().toList();
+        List<LineSegment> lines = service.getLineSegment(3).stream().toList();
 
 
         assertTrue(lines.size()>0 && lines.get(0).getPoints().contains(p1) && lines.get(0).getPoints().contains(p2) && lines.get(0).getPoints().contains(p3));
